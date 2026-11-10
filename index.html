@@ -3,19 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estefany | Portfólio</title>
+  <meta name="theme-color" content="#faf8ff">
+  <meta name="description" content="Portfólio de Estefany: tecnologia, criatividade e inteligência artificial.">
+  <title>Estefany | Tecnologia e Inteligência Artificial</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: Arial, sans-serif;
-      background: #f7f8fc;
-      color: #29344f;
+      background: #fcfbff;
+      color: #252644;
       line-height: 1.7;
     }
 
     header {
-      background: white;
       padding: 20px 8%;
       display: flex;
       justify-content: space-between;
@@ -24,156 +34,388 @@
       gap: 15px;
     }
 
-    .logo { color: #5265a8; font-size: 23px; font-weight: bold; }
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      color: #51417d;
+    }
 
-    nav { display: flex; gap: 15px; flex-wrap: wrap; }
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
 
     nav a {
-      color: #46516b;
+      color: #44415f;
       text-decoration: none;
       font-size: 14px;
     }
 
+    nav a:hover {
+      color: #8065bb;
+    }
+
     .hero {
-      padding: 85px 8%;
-      text-align: center;
-      background: linear-gradient(135deg, #edf0ff, #f8f4ff);
+      min-height: 570px;
+      padding: 75px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 55px;
+      background:
+        radial-gradient(circle at 85% 20%, #eee7ff 0, transparent 35%),
+        linear-gradient(120deg, #fcfbff, #f1edff);
     }
 
-    .hero span { color: #6475bb; font-weight: bold; }
-
-    h1 {
-      color: #29375d;
-      font-size: clamp(36px, 7vw, 56px);
-      margin: 15px 0;
+    .hero-text {
+      max-width: 590px;
     }
 
-    .hero p { max-width: 650px; margin: auto; }
-
-    .button {
-      display: inline-block;
-      background: #6475bb;
-      color: white;
-      padding: 11px 23px;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-
-    section { padding: 60px 8%; }
-
-    h2 { color: #34436d; margin-bottom: 20px; font-size: 28px; }
-
-    .card {
-      background: white;
-      border: 1px solid #e9ebf3;
-      border-radius: 16px;
-      padding: 25px;
+    .eyebrow {
+      color: #8065bb;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
       margin-bottom: 18px;
     }
 
-    .card h3 { color: #5265a8; margin-bottom: 10px; }
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
+    h1 {
+      font-size: clamp(38px, 6vw, 62px);
+      line-height: 1.15;
+      color: #252644;
+      margin-bottom: 20px;
     }
 
-    .contact { text-align: center; background: #edf0ff; }
+    h1 span {
+      color: #8065bb;
+    }
+
+    .hero-text p {
+      color: #65627c;
+      font-size: 17px;
+      max-width: 520px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 12px 25px;
+      background: #51417d;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: #8065bb;
+      transform: translateY(-2px);
+    }
+
+    .photo-area {
+      width: 310px;
+      height: 370px;
+      flex-shrink: 0;
+      padding: 10px;
+      border-radius: 48% 48% 25px 25px;
+      background: linear-gradient(145deg, #cbb9ef, #ffffff);
+      box-shadow: 0 18px 45px #51417d20;
+    }
+
+    .photo-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 48% 48% 18px 18px;
+    }
+
+    section {
+      padding: 75px 8%;
+    }
+
+    .section-title {
+      font-size: 30px;
+      color: #302b50;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: #77738c;
+      margin-bottom: 35px;
+    }
+
+    .about {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .about p {
+      color: #65627c;
+      margin-bottom: 15px;
+    }
+
+    .projects {
+      background: #f3f0fb;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      border: 1px solid #e9e2f5;
+      box-shadow: 0 8px 25px #51417d0b;
+    }
+
+    .project-card h3 {
+      color: #51417d;
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .project-card p {
+      color: #6c6881;
+      font-size: 15px;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 17px;
+      color: #6d559e;
+      background: #f0eaff;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      color: #66519b;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .knowledge {
+      text-align: center;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .tags span {
+      background: #f0eaff;
+      color: #554477;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+    }
+
+    .courses {
+      background: #f7f5fc;
+      text-align: center;
+    }
+
+    .course-note {
+      max-width: 650px;
+      margin: auto;
+      color: #77738c;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(120deg, #f0eaff, #e9efff);
+    }
+
+    .contact p {
+      color: #65627c;
+    }
 
     footer {
-      text-align: center;
       padding: 25px;
-      color: #778099;
+      text-align: center;
+      color: #817c94;
+      font-size: 13px;
     }
 
-    @media (max-width: 600px) {
-      header { justify-content: center; }
-      nav { justify-content: center; }
+    @media (max-width: 700px) {
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 45px;
+      }
+
+      .hero-text p {
+        margin: auto;
+      }
+
+      .photo-area {
+        width: 245px;
+        height: 295px;
+      }
+
+      section {
+        padding: 55px 7%;
+      }
     }
   </style>
 </head>
 
 <body>
+
   <header>
     <div class="logo">Estefany.</div>
     <nav>
-      <a href="#sobre">Sobre</a>
+      <a href="#sobre">Sobre mim</a>
       <a href="#projetos">Projetos</a>
       <a href="#conhecimentos">Conhecimentos</a>
+      <a href="#cursos">Cursos</a>
       <a href="#contato">Contato</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <span>TECNOLOGIA • CRIATIVIDADE • APRENDIZADO</span>
-      <h1>Olá, eu sou Estefany!</h1>
-      <p>
-        Estou construindo minha trajetória na tecnologia,
-        explorando a inteligência artificial e desenvolvendo
-        ideias que podem facilitar o dia a dia das pessoas.
-      </p>
-      <a class="button" href="#projetos">Conheça meus projetos</a>
+      <div class="hero-text">
+        <div class="eyebrow">TECNOLOGIA • CRIATIVIDADE • APRENDIZADO</div>
+        <h1>Olá, eu sou <span>Estefany!</span></h1>
+        <p>
+          Estou construindo minha trajetória na tecnologia,
+          explorando a inteligência artificial e desenvolvendo
+          ideias que buscam transformar necessidades reais
+          em soluções úteis.
+        </p>
+        <a href="#projetos" class="button">Conheça meus projetos</a>
+      </div>
+
+      <div class="photo-area">
+        <img
+          src="Arquivo_000000000938820e6248a483f18b.png"
+          alt="Foto profissional de Estefany"
+        >
+      </div>
     </section>
 
     <section id="sobre">
-      <h2>Sobre mim</h2>
-      <div class="card">
-        <p>
-          Sou uma pessoa curiosa, criativa e interessada em aprender.
-          Gosto de explorar novas ferramentas, compreender como as
-          tecnologias funcionam e transformar ideias em projetos.
+      <div class="about">
+        <h2 class="section-title">Sobre mim</h2>
+        <p class="section-subtitle">
+          Curiosidade, criatividade e vontade de aprender.
         </p>
         <p>
-          Atualmente, estou aprofundando meus conhecimentos em
-          inteligência artificial, ferramentas digitais e desenvolvimento
-          de soluções tecnológicas.
+          Sou estudante de Pedagogia e tenho interesse em tecnologia,
+          inteligência artificial e inovação.
+        </p>
+        <p>
+          Gosto de aprender, explorar ferramentas digitais e transformar
+          ideias em projetos. Acredito no potencial da tecnologia para
+          facilitar processos, ampliar possibilidades e ajudar pessoas
+          em diferentes contextos.
+        </p>
+        <p>
+          Meu objetivo é continuar desenvolvendo habilidades e construindo
+          soluções que unam criatividade, organização e inteligência artificial.
         </p>
       </div>
     </section>
 
-    <section id="projetos">
-      <h2>Meus projetos</h2>
-      <div class="card">
-        <h3>OrganizaIA</h3>
-        <p>
-          Projeto experimental de organização inteligente do tempo.
-          A proposta é ajudar pessoas a organizar tarefas, identificar
-          prioridades e planejar atividades considerando o tempo disponível.
-        </p>
-        <p>
-          O projeto está em desenvolvimento e faz parte da minha
-          jornada de aprendizado sobre inteligência artificial.
-        </p>
-        <a class="button"
-           href="https://organiza-tempo-inteligente.lovable.app"
-           target="_blank" rel="noopener noreferrer">
-          Conhecer o protótipo
-        </a>
+    <section class="projects" id="projetos">
+      <h2 class="section-title">Meus projetos</h2>
+      <p class="section-subtitle">
+        Ideias em construção e experiências com tecnologia.
+      </p>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>OrganizaIA</h3>
+          <p>
+            Um projeto de organização inteligente do tempo.
+            A proposta é ajudar pessoas a organizar tarefas,
+            identificar prioridades e adaptar seus planejamentos
+            diante de imprevistos.
+          </p>
+          <span class="status">Protótipo em desenvolvimento</span>
+          <br>
+          <a class="project-link"
+             href="https://organiza-tempo-inteligente.lovable.app"
+             target="_blank" rel="noopener noreferrer">
+            Conhecer o projeto →
+          </a>
+        </article>
+
+        <article class="project-card">
+          <h3>EducaIA</h3>
+          <p>
+            Uma ideia em desenvolvimento que busca explorar
+            possibilidades de uso da inteligência artificial
+            como apoio à organização e ao planejamento pedagógico.
+          </p>
+          <span class="status">Em fase de desenvolvimento</span>
+        </article>
       </div>
     </section>
 
-    <section id="conhecimentos">
-      <h2>Ferramentas e conhecimentos</h2>
-      <div class="skills">
-        <div class="card"><h3>Inteligência Artificial</h3><p>Exploração de ferramentas e aplicações de IA.</p></div>
-        <div class="card"><h3>Gemini</h3><p>Exploração de recursos de inteligência artificial.</p></div>
-        <div class="card"><h3>Lovable</h3><p>Criação de protótipos e ideias de aplicações.</p></div>
-        <div class="card"><h3>Canva</h3><p>Criação de materiais visuais e conteúdos digitais.</p></div>
-        <div class="card"><h3>GitHub</h3><p>Organização e publicação dos meus projetos.</p></div>
+    <section class="knowledge" id="conhecimentos">
+      <h2 class="section-title">Ferramentas e conhecimentos</h2>
+      <p class="section-subtitle">
+        Ferramentas que fazem parte da minha jornada de aprendizado.
+      </p>
+
+      <div class="tags">
+        <span>Inteligência Artificial</span>
+        <span>Gemini</span>
+        <span>Lovable</span>
+        <span>Canva</span>
+        <span>GitHub</span>
+        <span>Google Docs</span>
       </div>
     </section>
 
-    <section id="contato" class="contact">
-      <h2>Vamos nos conectar?</h2>
-      <p>Em breve, adicionarei meus canais profissionais de contato.</p>
+    <section class="courses" id="cursos">
+      <h2 class="section-title">Cursos e certificados</h2>
+      <p class="course-note">
+        Estou ampliando meus conhecimentos por meio de cursos,
+        formações e experiências de aprendizagem nas áreas de
+        tecnologia, educação e inteligência artificial.
+        Em breve, esta seção reunirá meus certificados e formações.
+      </p>
+    </section>
+
+    <section class="contact" id="contato">
+      <h2 class="section-title">Vamos nos conectar?</h2>
+      <p>
+        Estou aberta a aprender, compartilhar ideias e conhecer
+        oportunidades na área de tecnologia e inteligência artificial.
+      </p>
     </section>
   </main>
 
   <footer>
-    © 2026 Estefany | Portfólio
+    <p>© 2026 Estefany | Portfólio pessoal</p>
+    <p>Construindo ideias, aprendendo e criando possibilidades.</p>
   </footer>
+
 </body>
 </html>
