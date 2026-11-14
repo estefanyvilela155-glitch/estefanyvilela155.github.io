@@ -1,294 +1,668 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#faf8ff">
-    <meta name="description" content="Portfólio profissional de Estefany Vilela: educação, tecnologia, criatividade e inteligência artificial.">
-    <title>Estefany Vilela | Portfólio Profissional</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf8ff">
+  <meta name="description" content="Portfólio profissional de Estefany Vilela: educação, tecnologia, criatividade e inteligência artificial.">
+  <title>Estefany Vilela | Portfólio Profissional</title>
+
+  <style>
+    :root {
+      --primary: #66518f;
+      --primary-dark: #44345f;
+      --accent: #a58bd5;
+      --background: #fcfaff;
+      --surface: #ffffff;
+      --soft: #f1ecf9;
+      --text: #302b42;
+      --muted: #777187;
+      --border: #e9e2f2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    header {
+      padding: 22px 8%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      background: #ffffffeb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      min-height: 570px;
+      padding: 75px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 55px;
+      background:
+        radial-gradient(circle at 85% 15%, #e9dfff 0, transparent 34%),
+        linear-gradient(120deg, #fcfaff, #f1edfa);
+    }
+
+    .hero-text {
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(39px, 6vw, 64px);
+      line-height: 1.15;
+      margin-bottom: 22px;
+      color: var(--primary-dark);
+    }
+
+    h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 570px;
+    }
+
+    .hero-tagline {
+      margin-bottom: 24px;
+    }
+
+    .hero-tagline strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 3px;
+    }
+
+    .hero-tagline span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 13px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      opacity: .9;
+    }
+
+    .profile-container {
+      width: 310px;
+      height: 370px;
+      min-width: 260px;
+      padding: 10px;
+      border-radius: 48% 48% 25px 25px;
+      background: linear-gradient(145deg, #cbb9ef, #ffffff);
+      box-shadow: 0 18px 45px #51417d20;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 48% 48% 18px 18px;
+    }
+
+    section {
+      padding: 75px 8%;
+      scroll-margin-top: 85px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .about {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .projects {
+      background: var(--soft);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 25px #51417d0b;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .project-card h3 {
+      color: var(--primary-dark);
+      font-size: 23px;
+      margin: 10px 0;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .project-tags span {
+      background: var(--soft);
+      color: var(--primary);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+    }
+
+    .status {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #66518f;
+      background: #f1ecf9;
+      padding: 6px 12px;
+      border-radius: 20px;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    .knowledge {
+      text-align: center;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .tags span {
+      background: var(--soft);
+      color: var(--primary-dark);
+      padding: 10px 19px;
+      border-radius: 30px;
+      font-size: 14px;
+    }
+
+    .courses {
+      background: #f7f5fb;
+    }
+
+    .course-content {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .course-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 23px;
+      margin-top: 16px;
+    }
+
+    .course-card h3 {
+      color: var(--primary-dark);
+      font-size: 18px;
+    }
+
+    .course-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(120deg, #f0eaff, #e9efff);
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .contact .actions {
+      justify-content: center;
+    }
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding: 18px 5%;
+      }
+
+      nav {
+        gap: 14px 20px;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 55px 7%;
+      }
+
+      .profile-container {
+        width: 245px;
+        min-width: 0;
+        height: 295px;
+      }
+
+      .hero-text p {
+        margin: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      section {
+        padding: 55px 7%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header class="navbar">
-        <nav>
-            <a href="#sobre">Sobre mim</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#conhecimentos">Conhecimentos</a>
-            <a href="#formacao">Formação</a>
-            <a href="#contato">Contato</a>
-        </nav>
-    </header>
+  <header>
+    <nav aria-label="Navegação principal">
+      <a href="#sobre">Sobre mim</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#conhecimentos">Conhecimentos</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
 
-    <main>
+  <main>
 
-        <section class="hero">
+    <section class="hero">
+      <div class="hero-text">
 
-            <div class="profile-container">
-                <img
-                    src="arquivo_000000000938820eb12e6248a483f18b.png"
-                    alt="Foto de Estefany Vilela"
-                    class="profile-photo"
-                >
-            </div>
+        <div class="eyebrow">
+          EDUCAÇÃO • TECNOLOGIA • INTELIGÊNCIA ARTIFICIAL
+        </div>
 
-            <div class="hero-tagline">
-                <h2>Aprender. Criar. Evoluir.</h2>
-                <p>Construindo possibilidades por meio da tecnologia.</p>
-            </div>
+        <div class="hero-tagline">
+          <strong>Aprender. Criar. Evoluir.</strong>
+          <span>Construindo possibilidades por meio da tecnologia.</span>
+        </div>
 
-            <div class="badge-category">
-                EDUCAÇÃO • TECNOLOGIA • INTELIGÊNCIA ARTIFICIAL
-            </div>
+        <h1>
+          Olá, eu sou <span>Estefany!</span>
+        </h1>
 
-            <h1>Olá, eu sou Estefany!</h1>
+        <p>
+          Sou estudante de Pedagogia e estou construindo minha
+          trajetória na tecnologia e na inteligência artificial.
+          Gosto de explorar ferramentas, desenvolver ideias e
+          transformar necessidades reais em soluções criativas
+          e úteis.
+        </p>
 
-            <p class="hero-description">
-                Sou estudante de Pedagogia e desenvolvedora de projetos
-                com interesse em tecnologia, inteligência artificial e
-                inovação. Gosto de transformar ideias e necessidades
-                reais em soluções criativas e úteis.
-            </p>
+        <div class="actions">
+          <a href="#projetos" class="button button-primary">
+            Conheça meus projetos
+          </a>
 
-            <div class="hero-buttons">
-                <a href="#projetos" class="btn-primary">
-                    Conheça meus projetos
-                </a>
+          <a
+            href="https://www.linkedin.com/in/estefany-vilela-a079583a7"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-secondary"
+          >
+            Meu LinkedIn
+          </a>
+        </div>
+      </div>
 
-                <a
-                    href="https://www.linkedin.com/in/estefany-vilela-a079583a7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-secondary"
-                >
-                    Perfil no LinkedIn
-                </a>
-            </div>
+      <div class="profile-container">
+        <img
+          src="file_000000000938820eb12e6248a483f18b.png"
+          alt="Foto de Estefany Vilela"
+          class="profile-photo"
+        >
+      </div>
+    </section>
 
-        </section>
+    <section id="sobre">
+      <div class="about">
+        <h2 class="section-title">Sobre mim</h2>
 
-        <section id="sobre" class="about-section">
+        <p class="section-subtitle">
+          Curiosidade, criatividade e vontade de aprender.
+        </p>
 
-            <h2>Sobre mim</h2>
+        <p>
+          Sou estudante de Pedagogia e tenho experiência no
+          contexto da Educação Infantil. Minha trajetória na
+          educação despertou meu interesse por soluções que
+          possam facilitar processos, apoiar pessoas e ampliar
+          possibilidades de aprendizagem.
+        </p>
 
-            <p class="about-highlight">
-                Curiosidade, criatividade e vontade de aprender.
-            </p>
+        <p>
+          Tenho interesse em tecnologia, inteligência artificial
+          e ferramentas digitais. Gosto de explorar novas
+          possibilidades, aprender na prática e transformar
+          ideias em projetos.
+        </p>
 
-            <p>
-                Sou estudante de Pedagogia e tenho experiência no
-                contexto da Educação Infantil. Minha trajetória na
-                educação despertou meu interesse por soluções que
-                possam facilitar processos, apoiar pessoas e ampliar
-                possibilidades de aprendizagem.
-            </p>
+        <p>
+          Atualmente, venho desenvolvendo projetos que unem
+          criatividade, tecnologia e resolução de problemas,
+          buscando compreender como a inteligência artificial
+          pode ser aplicada em situações reais.
+        </p>
 
-            <p>
-                Tenho interesse em tecnologia, inteligência artificial
-                e ferramentas digitais. Gosto de explorar novas
-                possibilidades, aprender na prática e transformar
-                ideias em projetos.
-            </p>
+        <p>
+          Meu objetivo é continuar aprendendo, ampliar minhas
+          habilidades e construir uma trajetória profissional
+          na área de tecnologia e inovação.
+        </p>
+      </div>
+    </section>
 
-            <p>
-                Atualmente, estou desenvolvendo conhecimentos em
-                ferramentas de criação digital, desenvolvimento web
-                e inteligência artificial, buscando unir criatividade,
-                pensamento crítico e resolução de problemas.
-            </p>
+    <section class="projects" id="projetos">
+      <h2 class="section-title">Projetos em destaque</h2>
 
-            <p>
-                Meu objetivo é continuar aprendendo, desenvolver
-                soluções com propósito e construir minha trajetória
-                profissional na área de tecnologia e inovação.
-            </p>
+      <p class="section-subtitle">
+        Ideias transformadas em experiências práticas com tecnologia.
+      </p>
 
-        </section>
+      <div class="project-grid">
 
-        <section id="projetos" class="projects-section">
+        <article class="project-card">
+          <span class="project-number">PROJETO 01</span>
 
-            <h2>Projetos em destaque</h2>
+          <h3>Educa.IA</h3>
 
-            <p class="section-subtitle">
-                Ideias transformadas em experiências práticas com tecnologia.
-            </p>
+          <p>
+            Assistente pedagógico desenvolvido para apoiar
+            o planejamento de atividades na Educação Infantil.
+          </p>
 
-            <div class="projects-grid">
+          <p>
+            A proposta organiza experiências pedagógicas
+            considerando a faixa etária, o tema e o tempo
+            disponível, contemplando objetivos de aprendizagem,
+            materiais, etapas, mediação docente, segurança
+            e adaptações inclusivas.
+          </p>
 
-                <article class="project-card">
+          <div class="project-tags">
+            <span>React</span>
+            <span>TypeScript</span>
+            <span>Vite</span>
+            <span>Inteligência Artificial</span>
+          </div>
 
-                    <span class="project-tag-num">PROJETO 01</span>
+          <span class="status">
+            Projeto publicado
+          </span>
 
-                    <h3>Educa.IA</h3>
+          <a
+            class="project-link"
+            href="https://educa-ia-sepia.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conhecer o projeto →
+          </a>
+        </article>
 
-                    <p>
-                        Protótipo de assistente pedagógico desenvolvido
-                        para apoiar o planejamento de atividades na
-                        Educação Infantil. A proposta organiza
-                        experiências pedagógicas considerando a faixa
-                        etária, o tema e o tempo disponível, contemplando
-                        objetivos de aprendizagem, materiais, etapas,
-                        mediação docente, segurança e adaptações inclusivas.
-                    </p>
+        <article class="project-card">
+          <span class="project-number">PROJETO 02</span>
 
-                    <div class="tech-tags">
-                        <span>React</span>
-                        <span>TypeScript</span>
-                        <span>Vite</span>
-                        <span>IA</span>
-                        <span>Lovable</span>
-                    </div>
+          <h3>OrganizaIA</h3>
 
-                    <div class="project-status">
-                        Protótipo em desenvolvimento
-                    </div>
+          <p>
+            Assistente inteligente voltado à organização do
+            tempo, das tarefas e da produtividade.
+          </p>
 
-                    <a
-                        href="https://edu-idea-garden.lovable.app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        Conhecer o projeto →
-                    </a>
+          <p>
+            A proposta considera prioridades, prazos e tempo
+            disponível para ajudar a estruturar a rotina.
+            Diante de imprevistos, busca apresentar alternativas
+            viáveis, respeitando as escolhas e prioridades
+            do usuário.
+          </p>
 
-                </article>
+          <div class="project-tags">
+            <span>Lovable</span>
+            <span>Inteligência Artificial</span>
+            <span>Produtividade</span>
+          </div>
 
-                <article class="project-card">
+          <span class="status">
+            Protótipo disponível
+          </span>
 
-                    <span class="project-tag-num">PROJETO 02</span>
+          <a
+            class="project-link"
+            href="https://organiza-tempo-inteligente.lovable.app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Conhecer o projeto →
+          </a>
+        </article>
 
-                    <h3>OrganizAI</h3>
+      </div>
+    </section>
 
-                    <p>
-                        Protótipo de assistente inteligente voltado à
-                        organização do tempo e à produtividade. A proposta
-                        ajuda a organizar tarefas, prioridades e prazos
-                        considerando o tempo disponível. Também busca
-                        oferecer alternativas diante de imprevistos,
-                        respeitando as escolhas e prioridades do usuário.
-                    </p>
+    <section class="knowledge" id="conhecimentos">
+      <h2 class="section-title">Ferramentas e conhecimentos</h2>
 
-                    <div class="tech-tags">
-                        <span>Lovable</span>
-                        <span>Inteligência Artificial</span>
-                        <span>Produtividade</span>
-                    </div>
+      <p class="section-subtitle">
+        Ferramentas e tecnologias exploradas na minha jornada de aprendizado.
+      </p>
 
-                    <div class="project-status">
-                        Protótipo disponível
-                    </div>
+      <div class="tags">
+        <span>Inteligência Artificial</span>
+        <span>ChatGPT</span>
+        <span>Gemini</span>
+        <span>Lovable</span>
+        <span>Canva</span>
+        <span>React</span>
+        <span>TypeScript</span>
+        <span>Vite</span>
+        <span>GitHub</span>
+        <span>Google Docs</span>
+      </div>
+    </section>
 
-                    <a
-                        href="https://organiza-tempo-inteligente.lovable.app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="project-link"
-                    >
-                        Conhecer o projeto →
-                    </a>
+    <section class="courses" id="formacao">
+      <div class="course-content">
+        <h2 class="section-title">Formação e aprendizado</h2>
 
-                </article>
+        <p class="section-subtitle">
+          Minha formação acadêmica e o desenvolvimento contínuo
+          de novos conhecimentos.
+        </p>
 
-            </div>
+        <article class="course-card">
+          <h3>Licenciatura em Pedagogia</h3>
+          <p>
+            UNOPAR — formação acadêmica em andamento.
+          </p>
+        </article>
 
-        </section>
+        <article class="course-card">
+          <h3>Cursos e capacitações complementares</h3>
+          <p>
+            Formação continuada nas áreas de educação,
+            tecnologia e ferramentas digitais. Os cursos
+            concluídos serão apresentados individualmente
+            com suas respectivas instituições e cargas horárias.
+          </p>
+        </article>
 
-        <section id="conhecimentos" class="skills-section">
+        <article class="course-card">
+          <h3>Aprendizado prático em tecnologia</h3>
+          <p>
+            Desenvolvimento de projetos, criação de protótipos,
+            exploração de ferramentas de inteligência artificial
+            e experiências práticas com desenvolvimento web.
+          </p>
+        </article>
+      </div>
+    </section>
 
-            <h2>Ferramentas e conhecimentos</h2>
+    <section class="contact" id="contato">
+      <h2 class="section-title">Vamos nos conectar?</h2>
 
-            <p class="section-subtitle">
-                Tecnologias e ferramentas exploradas na minha jornada.
-            </p>
+      <p>
+        Estou aberta a oportunidades de aprendizado,
+        colaboração e desenvolvimento de projetos nas áreas
+        de tecnologia e inteligência artificial.
+      </p>
 
-            <div class="skills-flex">
-                <span class="skill-badge">Inteligência Artificial</span>
-                <span class="skill-badge">Gemini</span>
-                <span class="skill-badge">ChatGPT</span>
-                <span class="skill-badge">Lovable</span>
-                <span class="skill-badge">Canva</span>
-                <span class="skill-badge">GitHub</span>
-                <span class="skill-badge">React</span>
-                <span class="skill-badge">TypeScript</span>
-                <span class="skill-badge">Vite</span>
-                <span class="skill-badge">Google Docs</span>
-            </div>
+      <div class="actions">
+        <a
+          href="https://www.linkedin.com/in/estefany-vilela-a079583a7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button button-primary"
+        >
+          Conectar pelo LinkedIn
+        </a>
+      </div>
+    </section>
 
-        </section>
+  </main>
 
-        <section id="formacao" class="education-section">
-
-            <h2>Formação e aprendizado</h2>
-
-            <p class="section-subtitle">
-                Conhecimentos construídos por meio da educação formal,
-                cursos e experiências práticas.
-            </p>
-
-            <div class="edu-cards">
-
-                <article class="edu-card">
-                    <h3>Licenciatura em Pedagogia</h3>
-                    <p>
-                        UNOPAR — formação acadêmica em andamento.
-                    </p>
-                </article>
-
-                <article class="edu-card">
-                    <h3>Cursos e capacitações complementares</h3>
-                    <p>
-                        Formação continuada em educação, ferramentas
-                        digitais e tecnologia. Participação em congressos
-                        de Inteligência Artificial e capacitações em
-                        análise de dados (R).
-                    </p>
-                </article>
-
-                <article class="edu-card">
-                    <h3>Aprendizado prático em tecnologia</h3>
-                    <p>
-                        Desenvolvimento de protótipos, exploração de
-                        ferramentas de inteligência artificial e
-                        experiências práticas com desenvolvimento web.
-                    </p>
-                </article>
-
-            </div>
-
-        </section>
-
-        <section id="contato" class="contact-section">
-
-            <h2>Vamos nos conectar?</h2>
-
-            <p>
-                Estou aberta a oportunidades de aprendizado,
-                colaboração e desenvolvimento de projetos nas áreas
-                de tecnologia e inteligência artificial.
-            </p>
-
-            <div class="contact-buttons">
-                <a
-                    href="https://www.linkedin.com/in/estefany-vilela-a079583a7"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-primary"
-                >
-                    Acessar meu LinkedIn
-                </a>
-            </div>
-
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2026 Estefany | Portfólio Profissional</p>
-        <p>Aprendendo, desenvolvendo ideias e criando possibilidades.</p>
-    </footer>
+  <footer>
+    <p>© 2026 Estefany Vilela | Portfólio Profissional</p>
+    <p>Aprendendo, desenvolvendo ideias e criando possibilidades.</p>
+  </footer>
 
 </body>
-</html>
+    </html>
