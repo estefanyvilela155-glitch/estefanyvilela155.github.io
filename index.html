@@ -1,676 +1,300 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#faf8ff">
-  <meta name="description" content="Portfólio profissional de Estefany Vilela: educação, tecnologia, criatividade e inteligência artificial.">
-  <title>Estefany Vilela | Portfólio Profissional</title>
 
-  <style>
-    :root {
-      --primary: #66518f;
-      --primary-dark: #44345f;
-      --accent: #a58bd5;
-      --background: #fcfaff;
-      --surface: #ffffff;
-      --soft: #f1ecf9;
-      --text: #302b42;
-      --muted: #777187;
-      --border: #e9e2f2;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    header {
-      padding: 22px 8%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-      background: #ffffffeb;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 14px;
-      transition: .2s;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    .hero {
-      min-height: 570px;
-      padding: 75px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 55px;
-      background:
-        radial-gradient(circle at 85% 15%, #e9dfff 0, transparent 34%),
-        linear-gradient(120deg, #fcfaff, #f1edfa);
-    }
-
-    .hero-text {
-      max-width: 650px;
-    }
-
-    .eyebrow {
-      color: var(--primary);
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(39px, 6vw, 64px);
-      line-height: 1.15;
-      margin-bottom: 22px;
-      color: var(--primary-dark);
-    }
-
-    h1 span {
-      color: var(--primary);
-    }
-
-    .hero-text p {
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 570px;
-    }
-
-    .hero-tagline {
-      margin-bottom: 24px;
-    }
-
-    .hero-tagline strong {
-      display: block;
-      color: var(--primary-dark);
-      font-size: 21px;
-      margin-bottom: 3px;
-    }
-
-    .hero-tagline span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 13px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
-      transition: .2s;
-    }
-
-    .button-primary {
-      background: var(--primary);
-      color: white;
-    }
-
-    .button-secondary {
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-      opacity: .9;
-    }
-
-    .profile-container {
-      width: 310px;
-      height: 370px;
-      min-width: 260px;
-      padding: 10px;
-      border-radius: 48% 48% 25px 25px;
-      background: linear-gradient(145deg, #cbb9ef, #ffffff);
-      box-shadow: 0 18px 45px #51417d20;
-    }
-
-    .profile-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 48% 48% 18px 18px;
-    }
-
-    section {
-      padding: 75px 8%;
-      scroll-margin-top: 85px;
-    }
-
-    .section-title {
-      font-size: 30px;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    .about {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .about p {
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .projects {
-      background: var(--soft);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 24px;
-    }
-
-    .project-card {
-      background: var(--surface);
-      padding: 28px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 25px #51417d0b;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .project-number {
-      color: var(--accent);
-      font-weight: bold;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-
-    .project-card h3 {
-      color: var(--primary-dark);
-      font-size: 23px;
-      margin: 10px 0;
-    }
-
-    .project-card p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 10px;
-    }
-
-    .project-tags span {
-      background: var(--soft);
-      color: var(--primary);
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 11px;
-    }
-
-    .status {
-      margin-top: 18px;
-      font-size: 12px;
-      color: #66518f;
-      background: #f1ecf9;
-      padding: 6px 12px;
-      border-radius: 20px;
-    }
-
-    .project-link {
-      display: inline-block;
-      margin-top: 20px;
-      color: var(--primary);
-      font-weight: bold;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .project-link:hover {
-      text-decoration: underline;
-    }
-
-    .knowledge {
-      text-align: center;
-    }
-
-    .tags {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .tags span {
-      background: var(--soft);
-      color: var(--primary-dark);
-      padding: 10px 19px;
-      border-radius: 30px;
-      font-size: 14px;
-    }
-
-    .courses {
-      background: #f7f5fb;
-    }
-
-    .course-content {
-      max-width: 850px;
-      margin: auto;
-    }
-
-    .course-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 23px;
-      margin-top: 16px;
-    }
-
-    .course-card h3 {
-      color: var(--primary-dark);
-      font-size: 18px;
-    }
-
-    .course-card p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 6px;
-    }
-
-    .contact {
-      text-align: center;
-      background: linear-gradient(120deg, #f0eaff, #e9efff);
-    }
-
-    .contact p {
-      color: var(--muted);
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    .contact .actions {
-      justify-content: center;
-    }
-
-    footer {
-      padding: 25px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    @media (max-width: 760px) {
-      header {
-        padding: 18px 5%;
-      }
-
-      nav {
-        gap: 14px 20px;
-      }
-
-      .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 55px 7%;
-      }
-
-      .profile-container {
-        width: 245px;
-        min-width: 0;
-        height: 295px;
-      }
-
-      .hero-text p {
-        margin: auto;
-      }
-
-      .actions {
-        justify-content: center;
-      }
-
-      section {
-        padding: 55px 7%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <nav aria-label="Navegação principal">
-      <a href="#sobre">Sobre mim</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#conhecimentos">Conhecimentos</a>
-      <a href="#formacao">Formação</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
-
-  <main>
-
-    <section class="hero">
-      <div class="hero-text">
-
-        <div class="eyebrow">
-          EDUCAÇÃO • TECNOLOGIA • INTELIGÊNCIA ARTIFICIAL
-        </div>
-
-        <div class="hero-tagline">
-          <strong>Aprender| Criar| Evoluir </strong>
-          <span>Construindo possibilidades por meio da tecnologia.</span>
-        </div>
-
-        <h1>
-          Olá, eu sou <span>Estefany!</span>
-        </h1>
-
-        <p>
-          Sou estudante de Pedagogia e estou construindo minha
-          trajetória na tecnologia e na inteligência artificial.
-          Gosto de explorar ferramentas, desenvolver ideias e
-          transformar necessidades reais em soluções criativas
-          e úteis.
-        </p>
-
-        <div class="actions">
-          <a href="#projetos" class="button button-primary">
-            Conheça meus projetos
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/estefany-vilela-a079583a7/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-secondary"
-          >
-            Meu LinkedIn
-          </a>
-        </div>
-      </div>
-
-      <div class="profile-container">
-        <img
-          src="file_000000000938820eb12e6248a483f18b.png"
-          alt="Foto de Estefany Vilela"
-          class="profile-photo"
-        >
-      </div>
-    </section>
-
-    <section id="sobre">
-      <div class="about">
-        <h2 class="section-title">Sobre mim</h2>
-
-        <p class="section-subtitle">
-          Curiosidade, criatividade e vontade de aprender.
-        </p>
-
-        <p>
-          Sou estudante de Pedagogia e tenho experiência no
-          contexto da Educação Infantil. Minha trajetória na
-          educação despertou meu interesse por soluções que
-          possam facilitar processos, apoiar pessoas e ampliar
-          possibilidades de aprendizagem.
-        </p>
-
-        <p>
-          Tenho interesse em tecnologia, inteligência artificial
-          e ferramentas digitais. Gosto de explorar novas
-          possibilidades, aprender na prática e transformar
-          ideias em projetos.
-        </p>
-
-        <p>
-          Atualmente, venho desenvolvendo projetos que unem
-          criatividade, tecnologia e resolução de problemas,
-          buscando compreender como a inteligência artificial
-          pode ser aplicada em situações reais.
-        </p>
-
-        <p>
-          Meu objetivo é continuar aprendendo, ampliar minhas
-          habilidades e construir uma trajetória profissional
-          na área de tecnologia e inovação.
-        </p>
-      </div>
-    </section>
-
-    <section class="projects" id="projetos">
-      <h2 class="section-title">Projetos em destaque</h2>
-
-      <p class="section-subtitle">
-        Ideias transformadas em experiências práticas com tecnologia.
-      </p>
-
-      <div class="project-grid">
-
-        <article class="project-card">
-          <span class="project-number">PROJETO 01</span>
-
-          <h3>Educa.IA</h3>
-
-          <p>
-            Assistente pedagógico desenvolvido para apoiar
-            o planejamento de atividades na Educação Infantil.
-          </p>
-
-          <p>
-            A proposta organiza experiências pedagógicas
-            considerando a faixa etária, o tema e o tempo
-            disponível, contemplando objetivos de aprendizagem,
-            materiais, etapas, mediação docente, segurança
-            e adaptações inclusivas.
-          </p>
-
-          <div class="project-tags">
-            <span>React</span>
-            <span>TypeScript</span>
-            <span>Vite</span>
-            <span>Inteligência Artificial</span>
-          </div>
-
-          <span class="status">
-            Projeto publicado
-          </span>
-
-          <a
-            class="project-link"
-            href="https://educa-ia-sepia.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Conhecer o projeto →
-          </a>
-        </article>
-
-        <article class="project-card">
-          <span class="project-number">PROJETO 02</span>
-
-          <h3>OrganizaIA</h3>
-
-          <p>
-            Assistente inteligente voltado à organização do
-            tempo, das tarefas e da produtividade.
-          </p>
-
-          <p>
-            A proposta considera prioridades, prazos e tempo
-            disponível para ajudar a estruturar a rotina.
-            Diante de imprevistos, busca apresentar alternativas
-            viáveis, respeitando as escolhas e prioridades
-            do usuário.
-          </p>
-
-          <div class="project-tags">
-            <span>Lovable</span>
-            <span>Inteligência Artificial</span>
-            <span>Produtividade</span>
-          </div>
-
-          <span class="status">
-            Protótipo disponível
-          </span>
-
-          <a
-            class="project-link"
-            href="https://organiza-tempo-inteligente.lovable.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Conhecer o projeto →
-          </a>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="knowledge" id="conhecimentos">
-      <h2 class="section-title">Ferramentas e conhecimentos</h2>
-
-      <p class="section-subtitle">
-        Ferramentas e tecnologias exploradas na minha jornada de aprendizado.
-      </p>
-
-      <div class="tags">
-        <span>Inteligência Artificial</span>
-        <span>ChatGPT</span>
-        <span>Gemini</span>
-        <span>Lovable</span>
-        <span>Canva</span>
-        <span>React</span>
-        <span>TypeScript</span>
-        <span>Vite</span>
-        <span>GitHub</span>
-        <span>Google Docs</span>
-      </div>
-    </section>
-
-    <section class="courses" id="formacao">
-      <div class="course-content">
-        <h2 class="section-title">Formação e aprendizado</h2>
-
-        <p class="section-subtitle">
-          Minha formação acadêmica e o desenvolvimento contínuo
-          de novos conhecimentos.
-        </p>
-
-        <article class="course-card">
-          <h3>Licenciatura em Pedagogia</h3>
-          <p>
-            UNOPAR — formação acadêmica em andamento.
-          </p>
-        </article>
-
-        <article class="course-card">
-          <h3>Cursos e capacitações complementares</h3>
-          <p>
-            Formação continuada nas áreas de educação,
-            tecnologia e ferramentas digitais. Os cursos
-            concluídos serão apresentados individualmente
-            com suas respectivas instituições e cargas horárias.
-          </p>
-        </article>
-
-        <article class="course-card">
-          <h3>Aprendizado prático em tecnologia</h3>
-          <p>
-            Desenvolvimento de projetos, criação de protótipos,
-            exploração de ferramentas de inteligência artificial
-            e experiências práticas com desenvolvimento web.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="contact" id="contato">
-      <h2 class="section-title">Vamos nos conectar?</h2>
-
+<section class="courses" id="formacao">
+  <div class="course-content">
+    <h2 class="section-title">Formação e aprendizado</h2>
+
+    <p class="section-subtitle">
+      Minha formação acadêmica e o desenvolvimento contínuo
+      de novos conhecimentos.
+    </p>
+
+    <article class="course-card">
+      <h3>Licenciatura em Pedagogia</h3>
+      <p>UNOPAR — formação acadêmica em andamento.</p>
+    </article>
+
+    <article class="course-card">
+      <h3>Cursos e capacitações complementares</h3>
       <p>
-        Estou aberta a oportunidades de aprendizado,
-        colaboração e desenvolvimento de projetos nas áreas
-        de tecnologia e inteligência artificial.
+        Formação continuada nas áreas de educação,
+        tecnologia e ferramentas digitais. Os cursos
+        concluídos são apresentados individualmente
+        com suas respectivas instituições e cargas horárias.
       </p>
+    </article>
 
-      <div class="actions">
-        <a
-          
-href="https://www.linkedin.com/in/estefany-vilela-a079583a7"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button button-primary"
-        >
-          Conectar pelo LinkedIn
-        </a>
+    <article class="course-card">
+      <h3>Aprendizado prático em tecnologia</h3>
+      <p>
+        Desenvolvimento de projetos, criação de protótipos,
+        exploração de ferramentas de inteligência artificial
+        e experiências práticas com desenvolvimento web.
+      </p>
+    </article>
 
-        <a
-          href="mailto:Estefanyvilela155@gmail.com"
-          class="button button-secondary"
-        >
-          Enviar e-mail
-        </a>
+    <h2 class="section-title" style="margin-top: 45px;">
+      Certificados
+    </h2>
+
+    <style>
+      .certificate-category {
+        margin: 22px 0;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+        overflow: hidden;
+      }
+
+      .certificate-category summary {
+        cursor: pointer;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        color: var(--primary-dark);
+        font-weight: 600;
+        list-style: none;
+      }
+
+      .certificate-category summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .certificate-category summary::after {
+        content: "Ver mais +";
+        color: var(--primary);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      .certificate-category[open] summary::after {
+        content: "Ver menos −";
+      }
+
+      .certificate-list {
+        padding: 0 18px 18px;
+      }
+
+      .certificate-card {
+        padding: 16px;
+        margin-top: 12px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--background);
+      }
+
+      .certificate-card h4 {
+        margin: 0 0 10px;
+        color: var(--text);
+      }
+
+      .certificate-card p {
+        margin: 5px 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .certificate-card a {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .certificate-card a:hover {
+        text-decoration: underline;
+      }
+    </style>
+
+    <!-- INTELIGÊNCIA ARTIFICIAL E TECNOLOGIA -->
+    <details class="certificate-category">
+      <summary>Inteligência Artificial e Tecnologia</summary>
+      <div class="certificate-list">
+
+        <article class="certificate-card">
+          <h4>AI-900 — Fundamentos de IA no Azure</h4>
+          <p>Instituição: Fundação Bradesco</p>
+          <p>Carga horária: 16 horas | Ano: 2026</p>
+          <a href="certificados/AI-900.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Inteligência Artificial para Educadores</h4>
+          <p>Instituição: Fundação Bradesco</p>
+          <p>Carga horária: 4 horas | Ano: 2026</p>
+          <a href="certificados/IA-para-Educadores.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Fluência em Inteligência Artificial</h4>
+          <p>Instituição: Fundação Bradesco / Microsoft</p>
+          <p>Carga horária: 4 horas | Ano: 2026</p>
+          <a href="certificados/Fluencia-em-IA.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Inteligência Artificial para Pequenas e Médias Empresas</h4>
+          <p>Instituição: Fundação Bradesco / Microsoft</p>
+          <p>Carga horária: 4 horas | Ano: 2026</p>
+          <a href="certificados/IA-para-Pequenas-e-Medias-Empresas.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Engenharia de Prompts: Como Guiar a IA Generativa para Melhores Resultados</h4>
+          <p>Instituição: FGV Online</p>
+          <p>Carga horária: 2 horas | Ano: 2026</p>
+          <a href="certificados/Engenharia-de-Prompts.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Claude 101</h4>
+          <p>Instituição: Anthropic Education</p>
+          <p>Ano: 2026</p>
+          <a href="certificados/Claude-101.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Introduction to Agent Skills</h4>
+          <p>Instituição: Anthropic Education</p>
+          <p>Ano: 2026</p>
+          <a href="certificados/Introduction-to-Agent-Skills.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
       </div>
-    </section>
+    </details>
 
-  </main>
+    <!-- EDUCAÇÃO E PEDAGOGIA -->
+    <details class="certificate-category">
+      <summary>Educação e Pedagogia</summary>
+      <div class="certificate-list">
 
-  <footer>
-    <p>© 2026 Estefany Vilela | Portfólio Profissional</p>
-    <p>Aprendendo, desenvolvendo ideias e criando possibilidades.</p>
-  </footer>
+        <article class="certificate-card">
+          <h4>Práticas de Qualidade na Educação Infantil</h4>
+          <p>Instituição: UNICEF</p>
+          <p>Ano: 2025</p>
+          <a href="certificados/Praticas-de-Qualidade-na-Educacao-Infantil.pdf" target="_blank">Visualizar certificado</a>
+        </article>
 
-</body>
-</html>
+        <article class="certificate-card">
+          <h4>Currículo Integrado</h4>
+          <p>Instituição: UNICEF</p>
+          <p>Carga horária: 40 horas</p>
+          <a href="certificados/Curriculo-Integrado.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Leitura para Bebês</h4>
+          <p>Instituição: Associação Nova Escola / Itaú Social</p>
+          <a href="certificados/Leitura-para-Bebes.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Equipamentos e Materiais Didáticos</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <a href="certificados/Equipamentos-e-Materiais-Didaticos.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Letramento em Leitura e Escrita</h4>
+          <p>Instituição: Cogna Educação — Grupo Kroton</p>
+          <p>Carga horária: 180 horas | Ano: 2026</p>
+          <a href="certificados/Letramento-em-Leitura-e-Escrita.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Formação para Profissionais da Educação Infantil</h4>
+          <p>Instituição: MEC — SEB / AVAMEC</p>
+          <p>Carga horária: 200 horas | Ano: 2026</p>
+          <a href="certificados/Formacao-Profissionais-Educacao.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Aprendizagem Significativa</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <p>Carga horária: 30 horas | Ano: 2023</p>
+          <a href="certificados/Aprendizagem-Significativa.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+      </div>
+    </details>
+
+    <!-- DESENVOLVIMENTO E ADMINISTRAÇÃO -->
+    <details class="certificate-category">
+      <summary>Desenvolvimento e Administração</summary>
+      <div class="certificate-list">
+
+        <article class="certificate-card">
+          <h4>Desenvolvimento Pessoal e Interpessoal</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <a href="certificados/Desenvolvimento-Pessoal-e-Interpessoal.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Psicologia do Trabalho</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <a href="certificados/Psicologia-do-Trabalho.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Recursos Humanos</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <p>Carga horária: 20 horas | Ano: 2023</p>
+          <a href="certificados/Recursos-Humanos.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Trabalho Escolar e Teorias Administrativas</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <p>Carga horária: 30 horas | Ano: 2023</p>
+          <a href="certificados/Trabalho-Escolar-e-Teorias-Administrativas.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Marketing Pessoal</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <p>Carga horária: 20 horas | Ano: 2023</p>
+          <a href="certificados/Marketing-Pessoal.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Ética Profissional</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <p>Carga horária: 30 horas | Ano: 2023</p>
+          <a href="certificados/Etica-Profissional.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>Administração Financeira</h4>
+          <p>Instituição: IFRS — Aprenda Mais</p>
+          <p>Carga horária: 40 horas | Ano: 2023</p>
+          <a href="certificados/Administracao-Financeira.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+      </div>
+    </details>
+
+    <!-- OUTRAS FORMAÇÕES E EVENTOS -->
+    <details class="certificate-category">
+      <summary>Outras formações e eventos</summary>
+      <div class="certificate-list">
+
+        <article class="certificate-card">
+          <h4>Curso Introdutório para Agente Comunitário de Saúde (ACS)</h4>
+          <p>Instituição: AVASUS</p>
+          <a href="certificados/Curso-Introdutorio-ACS.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+        <article class="certificate-card">
+          <h4>VI Fórum Cogna — Por Um Mundo Melhor</h4>
+          <p>Instituição: Cogna Educação</p>
+          <p>Carga horária: 3 horas | Ano: 2026</p>
+          <a href="certificados/VI-Forum-Cogna.pdf" target="_blank">Visualizar certificado</a>
+        </article>
+
+      </div>
+    </details>
+
+  </div>
+</section>
